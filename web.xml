@@ -1,0 +1,41 @@
+<web-app>
+        <listener>
+             <listener-class>MyDBListener</listener-class>
+        </listener>
+        <context-param>
+                 <param-name>url</param-name>
+                 <param-value>jdbc:oracle:thin:@//localhost:1521/xe</param-value>
+        </context-param>
+        <context-param>
+                 <param-name>user</param-name>
+                 <param-value>advjavabatch</param-value>                 
+        </context-param>
+        <context-param>
+                 <param-name>password</param-name>
+                 <param-value>mystudents</param-value>                 
+        </context-param>
+	<servlet>
+		<servlet-class>MyLoginServlet4</servlet-class>
+		<servlet-name>MyLoginServlet4</servlet-name>
+        <init-param>
+                 <param-name>selectquery</param-name>
+                 <param-value>SELECT username FROM users WHERE userid=? AND password=?</param-value>
+       </init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyLoginServlet4</servlet-name>
+		<url-pattern>/MyLoginServlet4</url-pattern>
+	</servlet-mapping>
+       <servlet>
+		<servlet-class>MyRegistrationServlet4</servlet-class>
+		<servlet-name>MyRegistrationServlet4</servlet-name>
+           <init-param>
+                 <param-name>insertquery</param-name>
+                 <param-value>INSERT into users values(?,?,?)</param-value>
+           </init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyRegistrationServlet4</servlet-name>
+		<url-pattern>/MyRegistrationServlet4</url-pattern>
+	</servlet-mapping>
+</web-app>
